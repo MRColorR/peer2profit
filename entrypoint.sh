@@ -11,5 +11,5 @@ FD_GEOM=450x550 x11vnc -forever -usepw -create
 # Wait for X server to initialize
 sleep 5
 
-# Start the Peer2Profit client
-peer2profit 
+# Start the Peer2Profit client with architecture spoofing
+setarch x86_64 --uname-2.6 peer2profit 

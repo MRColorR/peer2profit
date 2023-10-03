@@ -2,18 +2,17 @@
 FROM ubuntu
 
 # Set environment variables
-ENV DISPLAY=:20 \
+ENV TZ=UTC \
+    DISPLAY=:20 \
     TINI_VERSION=v0.19.0 \
     HOME=/home/peer2profit \
     USER=peer2profit \
     XDG_RUNTIME_DIR=/home/peer2profit/runtime
 
-
-
 # Update and install necessary packages
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -qqy x11-apps x11-utils x11-xserver-utils x11vnc xvfb net-tools wget curl && \
+    apt-get install -qqy x11-apps x11-utils x11-xserver-utils x11vnc xvfb net-tools wget curl strace util-linux && \
     wget "https://updates.peer2profit.app/peer2profit_0.48_amd64.deb" -O /tmp/install.deb && \
     dpkg -i /tmp/install.deb || apt-get -y -f install && \
     apt-get autoremove -y && \
