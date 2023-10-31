@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-export HOME=/home/peer2profit
-export USER=peer2profit
-export DISPLAY=:20
-export XDG_RUNTIME_DIR=/run/user/$(id -u)
+# If VNC_PASSWORD is not set, use a default password
+: ${VNC_PASSWORD:=money4band}
+echo "Current vnc password is: ${VNC_PASSWORD}"
 
-# P2P window size is about 450x550
-FD_GEOM=450x550 x11vnc -forever -usepw -create
+# Store the password
+if [ "$VNC_PASSWORD" ]; then
+    sed -i "s/^\(command.*x11vnc.*\)$/\1 -passwd '$VNC_PASSWORD'/" /etc/supervisord.conf
+fi
 
-# Wait for X server to initialize
-sleep 5
+# If VNC_RESOLUTION is not set, use a default resolution
+: ${VNC_RESOLUTION:=1024x768}
+echo "Current VNC resolution is: ${VNC_RESOLUTION}"
 
-# Start the Peer2Profit client with architecture spoofing
-setarch x86_64 --uname-2.6 peer2profit 
+# Start Supervisor
+mkdir -p /var/log/supervisor/children
+exec supervisord -c /etc/supervisord.conf
+
