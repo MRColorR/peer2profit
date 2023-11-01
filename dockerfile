@@ -2,9 +2,10 @@
 FROM ubuntu:latest
 
 # Set environment variables
-ENV DISPLAY=:0 \
-    HOME=/home/peer2profit \
-    USER=peer2profit
+ENV DEBIAN_FRONTEND=noninteractive \
+    DISPLAY=:0 \
+    VNC_RESOLUTION=1024x768 \
+    HOME=/home/peer2profit
 
 # Update and install necessary packages
 RUN apt-get update && \
@@ -15,6 +16,7 @@ RUN apt-get update && \
     # x11-apps \
     # x11-utils \
     # x11-xserver-utils \
+    novnc \
     tini \
     supervisor \
     bash \
@@ -24,7 +26,8 @@ RUN apt-get update && \
     # net-tools \ 
     # util-linux \
     # strace \
-    && \
+    websockify && \
+    ln -s /usr/share/novnc/vnc_lite.html /usr/share/novnc/index.html && \
     wget "https://updates.peer2profit.app/peer2profit_0.48_amd64.deb" -O /tmp/install.deb && \
     dpkg -i /tmp/install.deb || apt-get -y -f install && \
     apt-get autoremove -y && \
@@ -45,7 +48,7 @@ RUN groupadd -g 999 peer2profit && \
     chown -R peer2profit:peer2profit /home/peer2profit 
 
 # Switch to peer2profit user
-USER peer2profit
+#USER peer2profit
 
 # Expose VNC and noVNC ports
 EXPOSE 5901 6901
