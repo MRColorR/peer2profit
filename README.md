@@ -22,7 +22,7 @@ This Docker image encapsulates the Peer2Profit application, enabling users to ru
 - Basic knowledge of Docker and containerization.
 
 ### Pull & Run:
-- Pull & Run the Image: `docker run -d -p 5901:5900 mrcolorrain/peer2profit`
+- Pull & Run the Image: `docker run -d -p 5901:5901 6901:6901 mrcolorrain/peer2profit`
 - Using a VNC Client connect to `localhost:5901` the vnc connection password is the name of my passive income project [money4band](https://github.com/MRColorR/money4band)
 - Peer2Profit GUI will appear
 
