@@ -5,7 +5,8 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive \
     DISPLAY=:0 \
     VNC_RESOLUTION=1024x768 \
-    HOME=/home/peer2profit
+    HOME=/home/peer2profit \
+    P2P_EMAIL=""
 
 # Update and install necessary packages
 RUN apt-get update && \
@@ -23,6 +24,7 @@ RUN apt-get update && \
     fluxbox \
     wget \
     curl \
+    procps \
     # net-tools \ 
     # util-linux \
     # strace \
@@ -40,6 +42,10 @@ COPY supervisord.conf /etc/supervisord.conf
 
 # Make scripts executable
 RUN chmod +x /entrypoint.sh
+
+# Create config directories
+RUN mkdir -p /config/xdg/config/
+RUN mkdir -p /root/.config
 
 # Create peer2profit user and group, and set permissions
 RUN groupadd -g 999 peer2profit && \
