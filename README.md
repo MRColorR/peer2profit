@@ -1,16 +1,16 @@
-> ⚠️ **ARCHIVED — Peer2Profit no longer supports Linux or Docker**  
-> This repository is now archived because Peer2Profit officially discontinued Linux and Docker support.  
-> The image will remain available for historical reference but will no longer receive updates.
-
-[![Project Status: Archived](https://img.shields.io/badge/status-archived-red.svg)](#)
-
-
 # Peer2Profit Unofficial Docker Image 
 Run and manage Peer2Profit in a Docker container with VNC support for easy GUI access.
 
 **Leave a star ⭐ if you like this project 🙂 thank you.**
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/mrcolorrain/peer2profit.svg)](https://hub.docker.com/repository/docker/mrcolorrain/peer2profit)
+[![Status: Archived](https://img.shields.io/badge/ARCHIVED-red?style=flat-square)](#)
+
+
+> ⚠️ **Heads up!**  
+> Peer2Profit has officially **dropped Linux & Docker support**.  
+> I’m archiving the repository to keep things transparent for the community.  
+> Thank you to everyone who used, starred, or contributed ❤️
 
 ## :information_source: Info
 This Docker image encapsulates the Peer2Profit application, enabling users to run the Peer2Profit application in a containerized enviroment. With the VNC protocol and a VNC client of your choice, you can seamlessly interact with the Peer2Profit application using a visual interface directly from your local machine. This image has been optimized for lightweight deployment and is capable of being executed on various other architectures through an emulation layer.
