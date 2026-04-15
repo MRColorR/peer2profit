@@ -1,3 +1,10 @@
+> ⚠️ **ARCHIVED — Peer2Profit no longer supports Linux or Docker**  
+> This repository is now archived because Peer2Profit officially discontinued Linux and Docker support.  
+> The image will remain available for historical reference but will no longer receive updates.
+
+[![Project Status: Archived](https://img.shields.io/badge/status-archived-red.svg)](#)
+
+
 # Peer2Profit Unofficial Docker Image 
 Run and manage Peer2Profit in a Docker container with VNC support for easy GUI access.
 
